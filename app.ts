@@ -2,10 +2,21 @@ const num1Element = document.getElementById("num1")! as HTMLInputElement;
 const num2Element = document.getElementById("num2")! as HTMLInputElement;
 const buttonElement = document.querySelector("button")!;
 
-const numResults: Array<number>= [];
+const numResults: Array<number> = [];
 const textResults: Array<string> = [];
 
-function add(a: number | string, b: number | string) {
+type NumOrString = number | string;
+// The Result type is a union type that can hold either a number or a string, along with a timestamp.
+type Result = { val: NumOrString; timestamp: Date };
+
+// The ResultObj interface is used to define the structure of an object that holds a value
+// (which can be a number or a string) and a timestamp.
+interface ResultObj {
+  val: NumOrString;
+  timestamp: Date;
+}
+
+function add(a: NumOrString, b: NumOrString) {
   if (typeof a === "number" && typeof b === "number") {
     return a + b;
   } else if (typeof a === "string" && typeof b === "string") {
@@ -14,7 +25,7 @@ function add(a: number | string, b: number | string) {
   return +a + +b;
 }
 
-function printResult(resultObj: { val: number; timestamp: Date }) {
+function printResult(resultObj: ResultObj) {
   console.log(resultObj.val);
 }
 
