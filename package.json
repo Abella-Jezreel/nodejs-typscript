@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-typscript",
+  "version": "1.0.0",
+  "description": "This project utilizes Node.js and TypeScript to ensure a scalable, maintainable, and type-safe backend solution. TypeScript helps catch errors early, improving code reliability and development efficiency.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abella-Jezreel/nodejs-typscript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abella-Jezreel/nodejs-typscript/issues"
+  },
+  "homepage": "https://github.com/Abella-Jezreel/nodejs-typscript#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2"
+  }
+}
