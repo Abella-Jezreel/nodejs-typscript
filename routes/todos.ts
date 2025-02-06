@@ -4,14 +4,18 @@ import Todo from "../models/todo";
 const router = Router();
 const todos: Todo[] = [];
 
+type RequestBody = { text: string };
+type RequestParams = { todoId: string };
+
 router.get("/", (req, res, next) => {
   res.status(200).json({ todos: todos });
 });
 
 router.post("/todo", (req, res, next) => {
+  const body = req.body as RequestBody;
   const newTodo: Todo = {
     id: new Date().toISOString(),
-    text: req.body.text,
+    text: body.text,
   };
 
   todos.push(newTodo);
@@ -19,7 +23,8 @@ router.post("/todo", (req, res, next) => {
 });
 
 router.put("/todo/:todoId", (req: any, res: any, next) => {
-  const tid = req.params.todoId;
+  const params = req.params as RequestParams;
+  const tid = params.todoId;
   const todoIndex = todos.findIndex((todoItem) => todoItem.id === tid);
 
   if (todoIndex >= 0) {
@@ -33,7 +38,8 @@ router.put("/todo/:todoId", (req: any, res: any, next) => {
 });
 
 router.delete("/todo/:todoId", (req: any, res: any, next) => {
-  const tid = req.params.todoId;
+  const params = req.params as RequestParams;
+  const tid = params.todoId;
   const todoIndex = todos.findIndex((todoItem) => todoItem.id === tid);
 
   if (todoIndex >= 0) {
