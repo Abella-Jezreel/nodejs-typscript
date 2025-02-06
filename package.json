@@ -4,7 +4,8 @@
   "description": "This project utilizes Node.js and TypeScript to ensure a scalable, maintainable, and type-safe backend solution. TypeScript helps catch errors early, improving code reliability and development efficiency.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/app.js"
   },
   "repository": {
     "type": "git",
