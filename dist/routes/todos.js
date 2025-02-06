@@ -1,22 +1,20 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const router = (0, express_1.Router)();
-const todos = [];
-router.get("/", (req, res, next) => {
+import { Router } from "express";
+var router = Router();
+var todos = [];
+router.get("/", function (req, res, next) {
     res.status(200).json({ todos: todos });
 });
-router.post("/todo", (req, res, next) => {
-    const newTodo = {
+router.post("/todo", function (req, res, next) {
+    var newTodo = {
         id: new Date().toISOString(),
         text: req.body.text,
     };
     todos.push(newTodo);
     res.status(201).json({ message: "Added Todo", todo: newTodo });
 });
-router.put("/todo/:todoId", (req, res, next) => {
-    const tid = req.params.todoId;
-    const todoIndex = todos.findIndex((todoItem) => todoItem.id === tid);
+router.put("/todo/:todoId", function (req, res, next) {
+    var tid = req.params.todoId;
+    var todoIndex = todos.findIndex(function (todoItem) { return todoItem.id === tid; });
     if (todoIndex >= 0) {
         todos[todoIndex] = { id: todos[todoIndex].id, text: req.body.text };
         return res
@@ -25,13 +23,13 @@ router.put("/todo/:todoId", (req, res, next) => {
     }
     res.status(404).json({ message: "Could not find todo for this id." });
 });
-router.delete("/todo/:todoId", (req, res, next) => {
-    const tid = req.params.todoId;
-    const todoIndex = todos.findIndex((todoItem) => todoItem.id === tid);
+router.delete("/todo/:todoId", function (req, res, next) {
+    var tid = req.params.todoId;
+    var todoIndex = todos.findIndex(function (todoItem) { return todoItem.id === tid; });
     if (todoIndex >= 0) {
         todos.splice(todoIndex, 1);
         return res.status(200).json({ message: "Deleted Todo" });
     }
     res.status(404).json({ message: "Could not find todo for this id." });
 });
-exports.default = router;
+export default router;
